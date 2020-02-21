@@ -1,0 +1,20 @@
+---
+
+devices:
+  amdgpu: # hwmon1
+    pwm: 1 # pwm1
+    fan: 1 # fan1_input
+    temp: 1 # temp1_input
+    limits:
+      temp: [30, 36]
+      st: [90, 90]
+      pwm: [0, 255]
+  it8792: # hwmon1
+    pwm: 1 # pwm1
+    fan: 1 # fan1_input
+    temp: 1 # temp1_input
+    limits:
+      temp: [40, 67]
+      st: [92, 79]
+      pwm: [0, 255]
+      pwm: [0, 255]
