@@ -36,5 +36,43 @@ optional arguments:
 
 
 ```
+# Usage
 
+Normally, you won't need to run `fanctl` manually. When the service is enable it will work automatically on every boot.
+
+However to check the settings are correct you can run:
+
+```bash
+fanctl -f - -vv
+```
+
+This will display the generated fancontrol config along with debugging information.
+
+
+# Installation
+
+The project uses Meson as its build system.
+As such it requires the `meson`  and `ninja` packages to be installed.
+Additionally since the package uses a yaml configuration, `python3` and `python-yaml` are also required. 
+
+To install `fanctl` run the following:
+
+```bash
+
+meson build --prefix=/usr --buildtype=release -Dsystemddir=/usr/lib/systemd
+sudo ninja -Cbuild install
+
+```
+**Note**: _The option `systemddir` must point to the systemD directrory on the system. Usually is on `/usr/lib/systemd`._
+
+To use the service without reboot the systemd daemon must be reloaded, i.e. `systemctl daemon-reload`
+
+If you want `fanctl` to be executed at boot enable the service.
+```bash
+systemctl enable fanctl.service
+
+```
+
+
+To uninstall fanctl execute `sudo ninja -Cbuild uninstall` from the project directory.
 
