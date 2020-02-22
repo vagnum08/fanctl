@@ -1,0 +1,14 @@
+[Unit]
+Description=Update hmwon paths for fancontrol
+Before=fancontrol.service
+
+
+[Service]
+Type=oneshot
+ProtectSystem=full
+ProtectHome=true
+ReadOnlyPaths=/sys
+ReadWritePaths=-/etc/fancontrol -/etc/fanctl/
+NoNewPrivileges=true
+ExecStart=/usr/bin/fanctl -v 
+
